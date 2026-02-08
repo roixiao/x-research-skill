@@ -40,11 +40,11 @@ Real-time security — 6 parallel detection modules in under 50ms.
   secret scanning. YAML config, SQLite analytics.
 ```
 
-25+ skills surfaced with links. Total X API cost: ~$0.06.
+25+ skills surfaced with links. Total X API cost: ~$0.75 (with dedup across queries).
 
 ## Setup
 
-1. Get an X API bearer token at [developer.x.com](https://developer.x.com) (pay-per-use tier works, ~$0.005/tweet read)
+1. Get an X API bearer token at [developer.x.com](https://developer.x.com) (pay-per-use tier works — ~$0.005/post returned)
 2. Set the env var:
    ```bash
    export X_BEARER_TOKEN="your_token"
@@ -77,15 +77,15 @@ Just talk to it:
 
 ## Cost
 
-X API pay-per-use charges ~$0.005 per tweet read.
+X API pay-per-use charges per post returned (not per API request). At $0.005/post, a search returning 100 tweets costs $0.50. Same post returned across multiple queries in one day only counts once (dedup).
 
-| Session | Queries | Tweets | Cost |
-|---------|---------|--------|------|
-| Quick check | 2-3 | ~200 | ~$1 |
-| Standard | 4-6 | ~500 | ~$2.50 |
-| Deep dive | 8-10 | ~800 | ~$4 |
+| Session | Queries | Unique Posts | Est. Cost |
+|---------|---------|-------------|-----------|
+| Quick check | 2-3 | ~100 | ~$0.50 |
+| Standard | 4-6 | ~300 | ~$1.50 |
+| Deep dive | 8-10 | ~600 | ~$3.00 |
 
-Deep-diving linked URLs (GitHub, blogs, docs) is free.
+Deep-diving linked URLs (GitHub, blogs, docs) is free. Exact per-endpoint rates are in the [Developer Console](https://console.x.com).
 
 ## Limitations
 
